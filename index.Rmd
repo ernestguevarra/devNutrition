@@ -37,11 +37,9 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-`r fontawesome::fa("envelope", fill = "white")` ernest@guevarra.io    
-`r fontawesome::fa("globe", fill = "white")` ernest.guevarra.io    
-`r fontawesome::fa("linkedin", fill = "white")` ernestguevarra    
+### 2 March 2021
 
-2 March 2021
+#### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
 ---
 
@@ -140,11 +138,11 @@ class: inverse, center, middle
 class: center, middle
 
 .pull-left[
-![](images/goiter.png)
+  ![](images/goiter.png)
 ]
 
 .pull-right[
-![](images/stomatitis_riboflavin.png)
+  ![](images/stomatitis_riboflavin.png)
 ]
 
 ---
@@ -193,19 +191,19 @@ class: center, middle
 
 # Defining famine
 
-*“There is still a major controversy over whether the Ethiopia crisis of 1999-2000 should be labeled a 'famine' or not, in light of the emotive and political connotations of the word.  In the author’s view - given the number of people affected, the damage to livelihoods and human development, and the loss of human life - there is no question about whether Ethiopia 1999-2000 was a famine.  But the continued controversy over this issue points to the need for a broadly accepted operational definition of famine.”* (Maxwell, 2005)
+### *“There is still a major controversy over whether the Ethiopia crisis of 1999-2000 should be labeled a 'famine' or not, in light of the emotive and political connotations of the word.  In the author’s view - given the number of people affected, the damage to livelihoods and human development, and the loss of human life - there is no question about whether Ethiopia 1999-2000 was a famine.  But the continued controversy over this issue points to the need for a broadly accepted operational definition of famine.”* (Maxwell, 2005)
 
 ---
 
 class: inverse, center, middle
 
-*“Famine is a socio-economic process which causes the accelerated destitution of the most vulnerable, marginal and least-powerful groups in a community, to a point where they can no longer, as a group, maintain a sustainable livelihood.  Ultimately, the process leads to the inability of the individual to acquire sufficient food to sustain life.”* (Walker, 1989)
+## *“Famine is a socio-economic process which causes the accelerated destitution of the most vulnerable, marginal and least-powerful groups in a community, to a point where they can no longer, as a group, maintain a sustainable livelihood.  Ultimately, the process leads to the inability of the individual to acquire sufficient food to sustain life.”* (Walker, 1989)
 
 ---
 
 # Useful definitions?
 
-*“Most definitions merely provide ‘a pithy description’ of what happens during famines, rather than ‘helping us to do the diagnosis - the traditional function of a definition’.”* (Sen 1981)
+## *“Most definitions merely provide ‘a pithy description’ of what happens during famines, rather than ‘helping us to do the diagnosis - the traditional function of a definition’.”* (Sen 1981)
 
 ---
 
@@ -321,8 +319,9 @@ class: center, middle
 
 ---
 
-![](images/outcomes3.png)
+class: center, middle
 
+![](images/outcomes3.png)
 ---
 
 # Development interventions in relation to nutrition outcomes
@@ -333,7 +332,21 @@ class: center, middle
 
 * Scaling up of interventions to reach greatest coverage continue to be a problem even in non-crisis/famine situations and fails terribly in crisis situations
 
-Continuing tension between development and humanitarian interventions; between sustainable response or emergency response
+* Continuing tension between development and humanitarian interventions; between sustainable response or emergency response
+
+---
+
+# Food systems approach
+
+* encompass the entire range of actors and their interlinked value-adding activities involved in the
+production, aggregation, processing, distribution, consumption and disposal of food products that originate from agriculture,
+forestry or fisheries, and parts of the broader economic, societal and natural environments in which they are embedded.
+
+* The food system is composed of sub-systems (e.g. farming system, waste management system, input supply system, etc.)
+and interacts with other key systems (e.g. energy system, trade system, health system, etc.).
+
+* A sustainable food system (SFS) is a food system that delivers food security and nutrition for all in such a way that the
+economic, social and environmental bases to generate food security and nutrition for future generations are not compromised. 
 
 ---
 
