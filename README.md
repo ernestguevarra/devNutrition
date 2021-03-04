@@ -1,8 +1,9 @@
 # Development and Nutrition
 
 <!-- badges: start -->
-[![](https://img.shields.io/badge/version-v0.1.0.2021-orange)]()
+[![](https://img.shields.io/badge/version-v0.1.0.2021-orange)](https://github.com/ernestguevarra/devNutrition/releases/tag/v0.1.0.2021)
 [![](https://img.sheilds.io/badge/license-GPLv3-blue)](https://github.com/ernestguevarra/devNutrition/blob/master/LICENSE.md)
+[![DOI](https://zenodo.org/badge/343647731.svg)](https://zenodo.org/badge/latestdoi/343647731)
 <!-- badges: end -->
 
 This session will allow you to apply what you have learned thus far in the module to the issue of nutrition. Development processes have been related to what has been termed the 'nutrition transition' where populations are increasingly faced with the burden of overweight and obesity replacing that of undernutrition. However, as with the epidemiologic transition, we see a more nuanced dynamic of nutrition challenges corresponding to processes of development. Unfortunately, as SDG 2 (Zero Hunger) suggests, we have not been successful in eliminating undernutrition which remains a recognised global challenge. In this session, we will examine why, despite economic growth and advances in food production and distribution, the risk of undernutrition and famines persist. We will also critically review examples of development interventions specifically aimed at childhood undernutrition on the one hand and famines on the other. Through these examples, we will tease out the relevant considerations and likely mechanisms linking development to nutrition.
