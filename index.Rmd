@@ -37,7 +37,7 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-### 2 March 2021
+### 22 February 2021
 
 #### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
@@ -57,7 +57,7 @@ class: inverse, center, middle
 
 # Global burden of malnutrition
 
-Charts taken from the [2020 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
+Charts taken from the [2021 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
 
 ---
 
