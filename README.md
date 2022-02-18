@@ -1,7 +1,7 @@
 # Development and Nutrition
 
 <!-- badges: start -->
-[![](https://img.shields.io/badge/version-v0.1.0.2021-orange)](https://github.com/ernestguevarra/devNutrition/releases/tag/v0.1.0.2021)
+[![](https://img.shields.io/badge/version-v0.2.0.2022-orange)](https://github.com/ernestguevarra/devNutrition/releases/tag/v0.2.0.2022)
 [![](https://img.sheilds.io/badge/license-GPLv3-blue)](https://github.com/ernestguevarra/devNutrition/blob/master/LICENSE.md)
 [![DOI](https://zenodo.org/badge/343647731.svg)](https://zenodo.org/badge/latestdoi/343647731)
 <!-- badges: end -->
