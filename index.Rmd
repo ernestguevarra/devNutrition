@@ -17,11 +17,14 @@ options(htmltools.dir.version = FALSE)
 
 if(!require(remotes)) install.packages("remotes")
 if(!require(fontawesome)) remotes::install_github("rstudio/fontawesome")
+
+source("gnr_data.R")
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
-mono_light(
+
+style_mono_light(
   base_color = "#002147",
   title_slide_background_image = "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2014/7/29/1406640126780/f089869e-2c47-481b-be03-db976b2ec9e1-1024x768.jpeg?width=620&quality=85&auto=format&fit=max&s=fd5278ce1249bf8f11f78a7bc869933e",
   title_slide_background_size = "cover",
@@ -29,7 +32,12 @@ mono_light(
   header_font_google = google_font("Fira Sans"),
   text_font_google   = google_font("Fira Sans Condensed"),
   code_font_google   = google_font("Fira Mono"),
-  text_slide_number_font_size = "0.5em"
+  text_font_size = "1.2em",
+  header_h1_font_size = "50px",
+  header_h2_font_size = "40px",
+  header_h3_font_size = "30px",
+  text_slide_number_font_size = "0.5em",
+  footnote_font_size = "0.5em"
 )
 ```
 
@@ -37,7 +45,7 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-### 2 March 2021
+### 22 February 2021
 
 #### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
@@ -57,35 +65,222 @@ class: inverse, center, middle
 
 # Global burden of malnutrition
 
-Charts taken from the [2020 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
+Charts taken from the [2021 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
 
 ---
 
-# The double burden of malnutrition
+background-color: #FFFFFF
 
-![](https://globalnutritionreport.org/media/images/Fig-2.4_2400-min.width-2400.png)
+# Burden of child malnutrition
+
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 10, fig.height = 6}
+region_child_nutrition |>
+  dplyr::filter(
+    region == "World", indicator != "lbw", disaggregation == "sex"
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, group = indicator)) +
+  geom_line(mapping = aes(colour = indicator), size = 1) +
+  geom_point(mapping = aes(colour = indicator), size = 2) +
+  labs(
+    title = "Burden of child malnutrition",
+    subtitle = "Prevalence of stunting, wasting and overweight in children under 5 years of age",
+    x = "",
+    y = "%"
+  ) +
+  theme_minimal() +
+  theme(legend.title = element_blank())
+```
+
 ---
 
-# The double burden of malnutrition by fragility
+background-color: #FFFFFF
 
-![](https://globalnutritionreport.org/media/images/Fig-2.5_2400-min.width-2400.png)
+# Double burden: stunting and overweight
+
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 10, fig.height = 6}
+countries <- c(
+  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
+  "Malaysia", "Cameroon", "Viet Nam", "Eritrea"
+)
+
+country_child_nutrition |>
+  dplyr::filter(
+    country %in% countries,
+    indicator == "coexistence",
+    disaggregation == "all",
+    disagg.value == "Stunting and overweight",
+    !is.na(value)
+  ) |>
+  ggplot(mapping = aes(x = year, y = value)) +
+  geom_point(
+    mapping = aes(colour = country),
+    size = 4
+  ) +
+  labs(
+    title = "Double burden of malnutrition",
+    subtitle = "Prevalence of coexisting stunting and overweight in children under 5 years of age",
+    x = "",
+    y = "%"
+  ) +
+  theme_minimal()
+```
 
 ---
 
-# Inequalities in childhood malnutrition
+background-color: #FFFFFF
 
-![](https://globalnutritionreport.org/media/images/Fig-2.7_2400-min.width-2400.png)
+# Double burden: wasting and stunting
+
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 10, fig.height = 6}
+countries <- c(
+  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
+  "Malaysia", "Cameroon", "Viet Nam", "Eritrea"
+)
+
+country_child_nutrition |>
+  dplyr::filter(
+    country %in% countries,
+    indicator == "coexistence",
+    disaggregation == "all",
+    disagg.value == "Wasting and stunting",
+    !is.na(value)
+  ) |>
+  ggplot(mapping = aes(x = year, y = value)) +
+  geom_point(
+    mapping = aes(colour = country),
+    size = 4
+  ) +
+  labs(
+    title = "Double burden of malnutrition",
+    subtitle = "Prevalence of coexisting wasting and stunting in children under 5 years of age",
+    x = "",
+    y = "%"
+  ) +
+  theme_minimal()
+```
 
 ---
+
+background-color: #FFFFFF
 
 # Inequalities in child stunting
 
-![](https://globalnutritionreport.org/media/images/Fig-2.11_2400-min.width-2400.png)
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+country_child_nutrition |>
+  dplyr::filter(
+    country %in% countries,
+    indicator == "stunting",
+    disaggregation == "wealth",
+    !is.na(value)
+  ) |>
+  dplyr::mutate(
+    disagg.value = factor(
+      x = disagg.value, 
+      levels = c("Highest", "Second highest", 
+                 "Middle", "Second lowest", "Lowest")
+    )
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
+  geom_line(
+    mapping = aes(colour = disagg.value),
+    size = 1.5
+  ) +
+  labs(
+    title = "Inequalities in child stunting",
+    subtitle = "Prevalence of stunting in children under 5 years of age by wealth quintiles",
+    x = "",
+    y = "%"
+  ) +
+  facet_wrap(. ~ country, nrow = 2) +
+  theme_minimal() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(size = 8, angle = 90)
+  )
+```
+
 ---
 
-# Inequalities in underweight, overweight and obesity
+background-color: #FFFFFF
 
-![](https://globalnutritionreport.org/media/images/Fig-2.13_2400-min.width-2400.png)
+# Inequalities in child wasting
+
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+country_child_nutrition |>
+  dplyr::filter(
+    country %in% countries,
+    indicator == "wasting",
+    disaggregation == "wealth",
+    !is.na(value)
+  ) |>
+  dplyr::mutate(
+    disagg.value = factor(
+      x = disagg.value, 
+      levels = c("Highest", "Second highest", 
+                 "Middle", "Second lowest", "Lowest")
+    )
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
+  geom_line(
+    mapping = aes(colour = disagg.value),
+    size = 1.5
+  ) +
+  labs(
+    title = "Inequalities in child wasting",
+    subtitle = "Prevalence of wasting in children under 5 years of age by wealth quintiles",
+    x = "",
+    y = "%"
+  ) +
+  facet_wrap(. ~ country, nrow = 2) +
+  theme_minimal() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(size = 8, angle = 90)
+  )
+```
+
+---
+
+background-color: #FFFFFF
+
+# Inequalities in child overweight
+
+```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+country_child_nutrition |>
+  dplyr::filter(
+    country %in% countries,
+    indicator == "overweight",
+    disaggregation == "wealth",
+    !is.na(value)
+  ) |>
+  dplyr::mutate(
+    disagg.value = factor(
+      x = disagg.value, 
+      levels = c("Highest", "Second highest", 
+                 "Middle", "Second lowest", "Lowest")
+    )
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
+  geom_line(
+    mapping = aes(colour = disagg.value),
+    size = 1.5
+  ) +
+  labs(
+    title = "Inequalities in child overweight",
+    subtitle = "Prevalence of overweight in children under 5 years of age by wealth quintiles",
+    x = "",
+    y = "%"
+  ) +
+  facet_wrap(. ~ country, nrow = 2) +
+  theme_minimal() +
+  theme(
+    legend.title = element_blank(),
+    legend.position = "top",
+    axis.text.x = element_text(size = 8, angle = 90)
+  )
+```
 
 ---
 
@@ -121,7 +316,13 @@ class: inverse, center, middle
 
 ---
 
+background-color: #FFFFFF
+background-image: url(https://media.gatesnotes.com/-/media/Images/Articles/Development/Why-Does-Hunger-Still-Exist-Africas-Table-Day-One/stunted_photo_800x680.ashx)
+background-size: 95%
+
+<!---
 ![](https://media.gatesnotes.com/-/media/Images/Articles/Development/Why-Does-Hunger-Still-Exist-Africas-Table-Day-One/stunted_photo_800x680.ashx)
+--->
 
 ---
 
@@ -307,21 +508,16 @@ class: inverse, center, middle
 
 ---
 
-class: center, middle
+background-color: #FFFFFF
 
-![](images/outcomes1.png)
-
----
-
-class: center, middle
-
-![](images/outcomes2.png)
+.center[![](https://globalnutritionreport.org/media/images/Fig-1.3.width-1200.png)]
 
 ---
 
-class: center, middle
+background-color: #FFFFFF
 
-![](images/outcomes3.png)
+.center[![](https://globalnutritionreport.org/media/images/Fig-1.5a.width-1200.png)]
+
 ---
 
 # Development interventions in relation to nutrition outcomes
@@ -354,7 +550,17 @@ class: inverse, center, middle
 
 # Questions?
 
+---
 
+class: inverse, center, middle
+
+# Thank you!
+
+Slides can be viewed at https://ernest.guevarra.io/devNutrition
+
+PDF version of slides can be downloaded at https://ernest.guevarra.io/devNutrition/devNutrition.pdf
+
+R scripts for slides available at https://github.com/ernestguevarra/devNutrition
 
 
 
