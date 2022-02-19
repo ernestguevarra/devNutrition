@@ -9,6 +9,7 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(ggiraph)
 
 
 
@@ -70,22 +71,23 @@ region_child_nutrition |>
     region == "World", indicator != "lbw", disaggregation == "sex"
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = indicator)) +
-  geom_line(
-    mapping = aes(colour = indicator),
-    size = 1
-  ) +
-  geom_point(
-    mapping = aes(colour = indicator),
-    size = 2
-  ) +
+  geom_line(mapping = aes(colour = indicator), size = 1) +
+  geom_point(mapping = aes(colour = indicator), size = 3) +
   labs(
-    title = "Burden of child malnutrition",
-    subtitle = "Prevalence of stunting, wasting and overweight in children under 5 years of age",
-    x = "Year",
+    title = "Prevalence of stunting, wasting and overweight in children under 5 years of age",
+    x = "",
     y = "%"
   ) +
   theme_minimal() +
-  theme(legend.title = element_blank())
+  theme(
+    plot.title = element_text(size = 20),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 14),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14)
+  )
 
 ## Countries
 
