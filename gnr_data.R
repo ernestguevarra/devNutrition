@@ -21,7 +21,7 @@ library(ggiraph)
 #
 ################################################################################
 
-## Download and read -----------------------------------------------------------
+## Download and read GNR data --------------------------------------------------
 
 if (!file.exists("data/2021_Global_Nutrition_Report_Dataset.xlsx")) {
   gnr2021_info <- gnr::download_gnr_data(.year = "2021", path = "data")
@@ -63,9 +63,17 @@ country_child_nutrition <- gnr2021[["Country child nutrition"]] |>
     values_to = "value"
   )
 
-## Plot ------------------------------------------------------------------------
 
-## World
+
+################################################################################
+#
+#'
+#' Create plots
+#'
+#
+################################################################################
+
+## Plot global stunting, wasting, and overweight -------------------------------
 region_child_nutrition |>
   dplyr::filter(
     region == "World", indicator != "lbw", disaggregation == "sex"
@@ -89,15 +97,50 @@ region_child_nutrition |>
     axis.text.y = element_text(size = 14)
   )
 
-## Countries
+global_plot <- region_child_nutrition |>
+  dplyr::filter(
+    region == "World", indicator != "lbw", disaggregation == "sex"
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, group = indicator)) +
+  geom_line_interactive(
+    mapping = aes(colour = indicator, tooltip = value), size = 1
+  ) +
+  geom_point_interactive(
+    mapping = aes(colour = indicator, tooltip = value), size = 3
+  ) +
+  labs(
+    title = "Prevalence of stunting, wasting and overweight in children under 5 years of age",
+    x = "",
+    y = "%"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 20),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 14),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14)
+  )
 
-countries <- c(
-  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Malaysia", "Cameroon", "Viet Nam", "Eritrea"
+girafe(
+  ggobj = global_plot, 
+  options = list(
+    opts_sizing(rescale = TRUE, width = 0.7)
+  )
 )
 
-## Double burden: stunting and overweight
 
+## Plot country level metrics --------------------------------------------------
+
+## Select countries to plot
+countries <- c(
+  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
+  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
+)
+
+## Plot double burden: stunting and overweight
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
@@ -112,16 +155,22 @@ country_child_nutrition |>
     size = 4
   ) +
   labs(
-    title = "Double burden of malnutrition",
-    subtitle = "Prevalence of coexisting stunting and overweight in children under 5 years of age",
-    x = "Year",
+    title = "Prevalence of coexisting stunting and overweight in children under 5 years of age",
+    x = "",
     y = "%"
   ) +
   theme_minimal() +
-  theme(legend.title = element_blank())
+  theme(
+    plot.title = element_text(size = 20),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 12),
+    axis.text.x = element_text(size = 14),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14),
+  )
 
-## Double burden: wasting and stunting
-
+## Plot double burden: wasting and stunting
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
@@ -136,99 +185,123 @@ country_child_nutrition |>
     size = 4
   ) +
   labs(
-    title = "Double burden of malnutrition",
-    subtitle = "Prevalence of coexisting wasting and stunting in children under 5 years of age",
-    x = "Year",
+    title = "Prevalence of coexisting wasting and stunting in children under 5 years of age",
+    x = "",
     y = "%"
   ) +
   theme_minimal() +
-  theme(legend.title = element_blank())
+  theme(
+    plot.title = element_text(size = 20),
+    legend.position = "top",
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 10),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14),
+    strip.text = element_text(size = 16)
+  )
 
-## Inequalities - stunting
-
+## Plot inequalities - stunting
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "stunting",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
-    )
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
+    ),
+    year = as.integer(year)
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
     mapping = aes(colour = disagg.value),
     size = 1.5
   ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
   labs(
-    title = "Inequalities in child stunting",
-    subtitle = "Prevalence of stunting in children under 5 years of age by wealth quintiles",
-    x = "Year",
+    title = "Prevalence of stunting in children under 5 years of age by wealth quintiles",
+    x = "",
     y = "%"
   ) +
   facet_wrap(. ~ country, nrow = 2) +
   theme_minimal() +
   theme(
-    legend.title = element_blank(),
+    plot.title = element_text(size = 20),
     legend.position = "top",
-    axis.text.x = element_text(size = 8, angle = 90)
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 10),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14),
+    strip.text = element_text(size = 16)
   )
 
-## Inequalities - wasting
-
+## Plot inequalities - wasting
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "wasting",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
-    )
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
+    ),
+    year = as.integer(year)
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
     mapping = aes(colour = disagg.value),
     size = 1.5
   ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
   labs(
-    title = "Inequalities in child wasting",
-    subtitle = "Prevalence of wasting in children under 5 years of age by wealth quintiles",
-    x = "Year",
+    title = "Prevalence of wasting in children under 5 years of age by wealth quintiles",
+    x = "",
     y = "%"
   ) +
   facet_wrap(. ~ country, nrow = 2) +
   theme_minimal() +
   theme(
-    legend.title = element_blank(),
+    plot.title = element_text(size = 20),
     legend.position = "top",
-    axis.text.x = element_text(size = 8, angle = 90)
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 10),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14),
+    strip.text = element_text(size = 16)
   )
 
-## Inequalities - overweight
-
+## Plot inequalities - overweight
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "overweight",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
-    )
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
+    ),
+    year = as.integer(year)
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
@@ -236,15 +309,21 @@ country_child_nutrition |>
     size = 1.5
   ) +
   labs(
-    title = "Inequalities in child overweight",
-    subtitle = "Prevalence of overweight in children under 5 years of age by wealth quintiles",
-    x = "Year",
+    title = "Prevalence of overweight in children under 5 years of age by wealth quintiles",
+    x = "",
     y = "%"
   ) +
   facet_wrap(. ~ country, nrow = 2) +
   theme_minimal() +
   theme(
-    legend.title = element_blank(),
+    plot.title = element_text(size = 20),
     legend.position = "top",
-    axis.text.x = element_text(size = 8, angle = 90)
+    legend.title = element_blank(),
+    legend.text = element_text(size = 14),
+    axis.text.x = element_text(size = 10),
+    axis.title.y = element_text(size = 20),
+    axis.text.y = element_text(size = 14),
+    strip.text = element_text(size = 16)
   )
+
+
