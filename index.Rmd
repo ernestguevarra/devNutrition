@@ -19,6 +19,8 @@ if(!require(remotes)) install.packages("remotes")
 if(!require(fontawesome)) remotes::install_github("rstudio/fontawesome")
 
 source("gnr_data.R")
+
+tooltip_css <- "font-family:Arial,Helvetica,sans-serif; font-size:12px; font-weight:bold; color:#FFFFFF; padding:5px"
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -73,14 +75,18 @@ background-color: #FFFFFF
 
 # Burden of child malnutrition
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 12, fig.height = 8}
-region_child_nutrition |>
+```{r interactive1, echo = FALSE, eval = TRUE, fig.align = "center"}
+global_plot <- region_child_nutrition |>
   dplyr::filter(
     region == "World", indicator != "lbw", disaggregation == "sex"
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = indicator)) +
-  geom_line(mapping = aes(colour = indicator), size = 1) +
-  geom_point(mapping = aes(colour = indicator), size = 3) +
+  geom_line_interactive(
+    mapping = aes(colour = indicator, tooltip = value), size = 1
+  ) +
+  geom_point_interactive(
+    mapping = aes(colour = indicator, tooltip = value), size = 3
+  ) +
   labs(
     title = "Prevalence of stunting, wasting and overweight in children under 5 years of age",
     x = "",
@@ -88,29 +94,37 @@ region_child_nutrition |>
   ) +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 20),
+    plot.title = element_text(size = 16),
     legend.position = "top",
     legend.title = element_blank(),
-    legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 14),
-    axis.title.y = element_text(size = 20),
-    axis.text.y = element_text(size = 14)
+    legend.text = element_text(size = 12),
+    axis.text.x = element_text(size = 12),
+    axis.title.y = element_text(size = 16),
+    axis.text.y = element_text(size = 12)
   )
-```
 
+girafe(
+  ggobj = global_plot,
+  width_svg = 11, height_svg = 7,
+  options = list(
+    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_tooltip(css = tooltip_css, use_fill = TRUE)
+  )
+)
+```
 ---
 
 background-color: #FFFFFF
 
 # Double burden: stunting and overweight
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 12, fig.height = 6}
+```{r interactive2, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
   "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Malaysia", "Cameroon", "Viet Nam", "Eritrea"
+  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
 )
 
-country_child_nutrition |>
+double_burden_plot1 <- country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "coexistence",
@@ -118,8 +132,11 @@ country_child_nutrition |>
     disagg.value == "Stunting and overweight",
     !is.na(value)
   ) |>
-  ggplot(mapping = aes(x = year, y = value)) +
-  geom_point(
+  dplyr::mutate(
+    country_value = paste0(country, ": ", value)
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, tooltip = country_value)) +
+  geom_point_interactive(
     mapping = aes(colour = country),
     size = 4
   ) +
@@ -130,14 +147,23 @@ country_child_nutrition |>
   ) +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 20),
+    plot.title = element_text(size = 16),
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 12),
-    axis.text.x = element_text(size = 14),
-    axis.title.y = element_text(size = 20),
-    axis.text.y = element_text(size = 14),
+    axis.text.x = element_text(size = 12),
+    axis.title.y = element_text(size = 16),
+    axis.text.y = element_text(size = 12),
   )
+
+girafe(
+  ggobj = double_burden_plot1,
+  width_svg = 11, height_svg = 6,
+  options = list(
+    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_tooltip(css = tooltip_css, use_fill = TRUE)
+  )
+)
 ```
 
 ---
@@ -146,13 +172,13 @@ background-color: #FFFFFF
 
 # Double burden: wasting and stunting
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 12, fig.height = 6}
+```{r interactive3, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
   "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Malaysia", "Cameroon", "Viet Nam", "Eritrea"
+  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
 )
 
-country_child_nutrition |>
+double_burden_plot2 <- country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "coexistence",
@@ -160,8 +186,11 @@ country_child_nutrition |>
     disagg.value == "Wasting and stunting",
     !is.na(value)
   ) |>
-  ggplot(mapping = aes(x = year, y = value)) +
-  geom_point(
+  dplyr::mutate(
+    country_value = paste0(country, ": ", value)
+  ) |>
+  ggplot(mapping = aes(x = year, y = value, tooltip = country_value)) +
+  geom_point_interactive(
     mapping = aes(colour = country),
     size = 4
   ) +
@@ -172,15 +201,24 @@ country_child_nutrition |>
   ) +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 20),
+    plot.title = element_text(size = 16),
     legend.position = "top",
     legend.title = element_blank(),
-    legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10),
-    axis.title.y = element_text(size = 20),
-    axis.text.y = element_text(size = 14),
-    strip.text = element_text(size = 16)
+    legend.text = element_text(size = 12),
+    axis.text.x = element_text(size = 12),
+    axis.title.y = element_text(size = 16),
+    axis.text.y = element_text(size = 12),
+    strip.text = element_text(size = 14)
   )
+
+girafe(
+  ggobj = double_burden_plot2,
+  width_svg = 11, height_svg = 6,
+  options = list(
+    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_tooltip(css = tooltip_css, use_fill = TRUE)
+  )
+)
 ```
 
 ---
@@ -189,19 +227,21 @@ background-color: #FFFFFF
 
 # Inequalities in child stunting
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+```{r, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE, fig.align = "center", fig.width = 14, fig.height = 8}
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "stunting",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
     ),
     year = as.integer(year)
   ) |>
@@ -210,7 +250,7 @@ country_child_nutrition |>
     mapping = aes(colour = disagg.value),
     size = 1.5
   ) +
-  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015, 2020)) +
   labs(
     title = "Prevalence of stunting in children under 5 years of age by wealth quintiles",
     x = "",
@@ -223,7 +263,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10),
+    axis.text.x = element_text(size = 10, angle = 30),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -236,19 +276,21 @@ background-color: #FFFFFF
 
 # Inequalities in child wasting
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+```{r, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE, fig.align = "center", fig.width = 14, fig.height = 8}
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "wasting",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
     ),
     year = as.integer(year)
   ) |>
@@ -257,7 +299,7 @@ country_child_nutrition |>
     mapping = aes(colour = disagg.value),
     size = 1.5
   ) +
-  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015, 2020)) +
   labs(
     title = "Prevalence of wasting in children under 5 years of age by wealth quintiles",
     x = "",
@@ -270,7 +312,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10),
+    axis.text.x = element_text(size = 10, angle = 30),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -283,19 +325,21 @@ background-color: #FFFFFF
 
 # Inequalities in child overweight
 
-```{r, echo = FALSE, eval = TRUE, fig.align = "center", fig.width = 14, fig.height = 8}
+```{r, echo = FALSE, eval = TRUE, warning = FALSE, message = FALSE, fig.align = "center", fig.width = 14, fig.height = 8}
 country_child_nutrition |>
   dplyr::filter(
     country %in% countries,
     indicator == "overweight",
     disaggregation == "wealth",
+    disagg.value %in% c("Highest", "Middle", "Lowest"),
     !is.na(value)
   ) |>
   dplyr::mutate(
     disagg.value = factor(
       x = disagg.value, 
-      levels = c("Highest", "Second highest", 
-                 "Middle", "Second lowest", "Lowest")
+      #levels = c("Highest", "Second highest", 
+      #           "Middle", "Second lowest", "Lowest")
+      levels = c("Highest", "Middle", "Lowest")
     ),
     year = as.integer(year)
   ) |>
