@@ -348,6 +348,7 @@ country_child_nutrition |>
     mapping = aes(colour = disagg.value),
     size = 1.5
   ) +
+  scale_x_continuous(breaks = c(2000, 2005, 2010, 2015, 2020)) +
   labs(
     title = "Prevalence of overweight in children under 5 years of age by wealth quintiles",
     x = "",
@@ -360,7 +361,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10),
+    axis.text.x = element_text(size = 10, angle = 30),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -494,13 +495,17 @@ class: center, middle
 
 ---
 
-# Defining famine
+class: middle
 
-### *“There is still a major controversy over whether the Ethiopia crisis of 1999-2000 should be labeled a 'famine' or not, in light of the emotive and political connotations of the word.  In the author’s view - given the number of people affected, the damage to livelihoods and human development, and the loss of human life - there is no question about whether Ethiopia 1999-2000 was a famine.  But the continued controversy over this issue points to the need for a broadly accepted operational definition of famine.”*
+# Useful definitions?
 
-#### Maxwell, 2005
+### *“Most definitions merely provide ‘a pithy description’ of what happens during famines, rather than ‘helping us to do the diagnosis - the traditional function of a definition’.”*
+
+#### Sen 1981
 
 ---
+
+class: middle
 
 ### *“Famine is a socio-economic process which causes the accelerated destitution of the most vulnerable, marginal and least-powerful groups in a community, to a point where they can no longer, as a group, maintain a sustainable livelihood.  Ultimately, the process leads to the inability of the individual to acquire sufficient food to sustain life.”*
 
@@ -508,9 +513,11 @@ class: center, middle
 
 ---
 
-# Useful definitions?
+# Declaring a famine
 
-### *“Most definitions merely provide ‘a pithy description’ of what happens during famines, rather than ‘helping us to do the diagnosis - the traditional function of a definition’.”* (Sen 1981)
+### *“There is still a major controversy over whether the Ethiopia crisis of 1999-2000 should be labeled a 'famine' or not, in light of the emotive and political connotations of the word.  In the author’s view - given the number of people affected, the damage to livelihoods and human development, and the loss of human life - there is no question about whether Ethiopia 1999-2000 was a famine.  But the continued controversy over this issue points to the need for a broadly accepted operational definition of famine.”*
+
+#### Maxwell, 2005
 
 ---
 
