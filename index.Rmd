@@ -47,7 +47,7 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-### 22 February 2021
+### 21 February 2023
 
 #### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
@@ -67,7 +67,7 @@ class: inverse, center, middle
 
 # Global burden of malnutrition
 
-Charts taken from the [2021 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
+Charts created with data taken from the [2021 Global Nutrition Report](https://globalnutritionreport.org/reports/2020-global-nutrition-report/)
 
 ---
 
@@ -120,8 +120,8 @@ background-color: #FFFFFF
 
 ```{r interactive2, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
-  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
+  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
+  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
 )
 
 double_burden_plot1 <- country_child_nutrition |>
@@ -174,8 +174,8 @@ background-color: #FFFFFF
 
 ```{r interactive3, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
-  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
+  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
+  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
 )
 
 double_burden_plot2 <- country_child_nutrition |>

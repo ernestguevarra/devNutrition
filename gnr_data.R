@@ -136,8 +136,8 @@ girafe(
 
 ## Select countries to plot
 countries <- c(
-  "Nepal", "Nigeria", "Sudan", "Kenya", "India", "Indonesia", "South Africa", 
-  "Rwanda", "Cameroon", "Myanmar", "Eritrea", "Saint Lucia", "Kyrgyzstan"
+  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
+  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
 )
 
 ## Plot double burden: stunting and overweight
