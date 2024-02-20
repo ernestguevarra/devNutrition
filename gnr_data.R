@@ -103,7 +103,7 @@ global_plot <- region_child_nutrition |>
   ) |>
   ggplot(mapping = aes(x = year, y = value, group = indicator)) +
   geom_line_interactive(
-    mapping = aes(colour = indicator, tooltip = value), size = 1
+    mapping = aes(colour = indicator, tooltip = value), linewidth = 1
   ) +
   geom_point_interactive(
     mapping = aes(colour = indicator, tooltip = value), size = 3
@@ -136,8 +136,9 @@ girafe(
 
 ## Select countries to plot
 countries <- c(
-  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
-  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
+  "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
+  "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
+  "Malaysia", "Turkey", "Sierra Leone", "Ghana"
 )
 
 ## Plot double burden: stunting and overweight
@@ -222,7 +223,7 @@ country_child_nutrition |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
     mapping = aes(colour = disagg.value),
-    size = 1.5
+    linewidth = 1.5
   ) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
   labs(
@@ -264,7 +265,7 @@ country_child_nutrition |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
     mapping = aes(colour = disagg.value),
-    size = 1.5
+    linewidth = 1.5
   ) +
   scale_x_continuous(breaks = c(2000, 2005, 2010, 2015)) +
   labs(
@@ -306,7 +307,7 @@ country_child_nutrition |>
   ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
   geom_line(
     mapping = aes(colour = disagg.value),
-    size = 1.5
+    linewidth = 1.5
   ) +
   labs(
     title = "Prevalence of overweight in children under 5 years of age by wealth quintiles",
