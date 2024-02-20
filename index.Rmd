@@ -47,7 +47,7 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-### 21 February 2023
+### 20 February 2024
 
 #### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
@@ -120,8 +120,9 @@ background-color: #FFFFFF
 
 ```{r interactive2, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
-  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
-  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
+  "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
+  "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
+  "Malaysia", "Turkey", "Sierra Leone", "Ghana"
 )
 
 double_burden_plot1 <- country_child_nutrition |>
@@ -174,8 +175,9 @@ background-color: #FFFFFF
 
 ```{r interactive3, echo = FALSE, eval = TRUE, fig.align = "center"}
 countries <- c(
-  "Nigeria", "Sudan", "Kenya", "India", "South Africa", "Burundi", 
-  "Philippines", "Bangladesh", "Uganda", "Malawi", "South Sudan"
+  "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
+  "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
+  "Malaysia", "Turkey", "Sierra Leone", "Ghana"
 )
 
 double_burden_plot2 <- country_child_nutrition |>
@@ -263,7 +265,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10, angle = 30),
+    axis.text.x = element_text(size = 10, angle = 90),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -312,7 +314,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10, angle = 30),
+    axis.text.x = element_text(size = 10, angle = 90),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -361,7 +363,7 @@ country_child_nutrition |>
     legend.position = "top",
     legend.title = element_blank(),
     legend.text = element_text(size = 14),
-    axis.text.x = element_text(size = 10, angle = 30),
+    axis.text.x = element_text(size = 10, angle = 90),
     axis.title.y = element_text(size = 20),
     axis.text.y = element_text(size = 14),
     strip.text = element_text(size = 16)
@@ -407,7 +409,7 @@ class: inverse, center, middle
 ---
 
 background-color: #FFFFFF
-background-image: url(https://media.gatesnotes.com/-/media/Images/Articles/Development/Why-Does-Hunger-Still-Exist-Africas-Table-Day-One/stunted_photo_800x680.ashx)
+background-image: url(https://assets.gatesnotes.com/8a5ac0b3-6095-00af-c50a-89056fbe4642/d6a53cc7-ad9f-4dcd-aa9f-730e89c554c7/a9a310e1280e43f9b32f2511ce68d822.jpg)
 background-size: 95%
 
 <!---
