@@ -57,6 +57,8 @@ class: inverse, center, middle
 
 * The current global malnutrition burden
 
+* Game: Tayo na sa talipapa / Let's go to the market
+
 * Undernutrition, mortality, and famine oh my!
 
 * Interventions: what works?
@@ -369,6 +371,12 @@ country_child_nutrition |>
     strip.text = element_text(size = 16)
   )
 ```
+
+---
+
+class: inverse, center, middle
+
+# Tayo na sa talipapa / Let's go to the market
 
 ---
 
