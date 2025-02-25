@@ -138,7 +138,7 @@ girafe(
 countries <- c(
   "Nigeria", "Sudan", "South Sudan", "Sierra Leone", "Ghana", "Lesotho", 
   "Kenya", "Indonesia", "Liberia", "Zimbabwe", "Japan", "Egypt", "Mozambique",
-  "State of Palestine"
+  "State of Palestine", "Sri Lanka"
 )
 
 ## Plot double burden: stunting and overweight
