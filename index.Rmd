@@ -625,27 +625,17 @@ class: inverse, center, middle
 
 background-color: #FFFFFF
 
-.center[![](https://globalnutritionreport.org/media/images/Fig-1.3.width-1200.png)]
+.center[![](https://media.globalnutritionreport.org/images/Fig-2.1_Part1.width-1200.png)]
 
 ---
 
 background-color: #FFFFFF
 
-.center[![](https://globalnutritionreport.org/media/images/Fig-1.5a.width-1200.png)]
+.center[![](https://media.globalnutritionreport.org/images/Fig-2.3_2400-min.width-1200.png)]
 
 ---
-
-class: inverse, center, middle
 
 # Development interventions in relation to nutrition outcomes
-
----
-
-background-color: #FFFFFF
-background-image: url(https://scalingupnutrition.org/wp-content/uploads/2017/02/Framework-of-Actions.jpg)
-background-size: 95%
-
-???
 
 * Impact of development interventions is a mixed bag
 
