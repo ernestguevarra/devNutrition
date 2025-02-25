@@ -1,7 +1,7 @@
 ---
 title: "Development and Nutrition"
-author: ""
-date: #'`r Sys.Date()`'
+#author: ""
+#date: '`r Sys.Date()`'
 output:
   xaringan::moon_reader:
     lib_dir: libs
@@ -47,7 +47,7 @@ class: inverse, center, middle
 
 ## Ernest Guevarra
 
-### 20 February 2024
+### 25 February 2025
 
 #### `r fontawesome::fa("envelope", fill = "white")` [ernest@guevarra.io](mailto:ernest@guevarra.io)  -  `r fontawesome::fa("globe", fill = "white")` [ernest.guevarra.io](https://ernest.guevarra.io)  -  `r fontawesome::fa("linkedin", fill = "white")` [ernestguevarra](https://www.linkedin.com/in/ernestguevarra)    
 
@@ -56,8 +56,6 @@ class: inverse, center, middle
 # Outline
 
 * The current global malnutrition burden
-
-* Game: Tayo na sa talipapa / Let's go to the market
 
 * Undernutrition, mortality, and famine oh my!
 
@@ -109,7 +107,7 @@ girafe(
   ggobj = global_plot,
   width_svg = 11, height_svg = 7,
   options = list(
-    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_sizing(rescale = TRUE),
     opts_tooltip(css = tooltip_css, use_fill = TRUE)
   )
 )
@@ -121,11 +119,11 @@ background-color: #FFFFFF
 # Double burden: stunting and overweight
 
 ```{r interactive2, echo = FALSE, eval = TRUE, fig.align = "center"}
-countries <- c(
-  "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
-  "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
-  "Malaysia", "Turkey", "Sierra Leone", "Ghana"
-)
+# countries <- c(
+#   "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
+#   "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
+#   "Malaysia", "Turkey", "Sierra Leone", "Ghana"
+# )
 
 double_burden_plot1 <- country_child_nutrition |>
   dplyr::filter(
@@ -163,7 +161,7 @@ girafe(
   ggobj = double_burden_plot1,
   width_svg = 11, height_svg = 6,
   options = list(
-    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_sizing(rescale = TRUE),
     opts_tooltip(css = tooltip_css, use_fill = TRUE)
   )
 )
@@ -176,11 +174,11 @@ background-color: #FFFFFF
 # Double burden: wasting and stunting
 
 ```{r interactive3, echo = FALSE, eval = TRUE, fig.align = "center"}
-countries <- c(
-  "Nigeria", "Sudan", "India", "South Africa", "Philippines", "Uganda", 
-  "Malawi", "South Sudan", "Eritrea", "Indonesia", "Zimbabwe", "Argentina",
-  "Malaysia", "Turkey", "Sierra Leone", "Ghana"
-)
+# countries <- c(
+#   "Nigeria", "Sudan", "South Sudan", "Sierra Leone", "Ghana", "Lesotho", 
+#   "Kenya", "Indonesia", "Liberia", "Zimbabwe", "Japan", "Egypt", "Mozambique",
+#   "State of Palestine"
+# )
 
 double_burden_plot2 <- country_child_nutrition |>
   dplyr::filter(
@@ -219,7 +217,7 @@ girafe(
   ggobj = double_burden_plot2,
   width_svg = 11, height_svg = 6,
   options = list(
-    opts_sizing(rescale = FALSE, width = 0.8),
+    opts_sizing(rescale = TRUE),
     opts_tooltip(css = tooltip_css, use_fill = TRUE)
   )
 )
@@ -371,12 +369,6 @@ country_child_nutrition |>
     strip.text = element_text(size = 16)
   )
 ```
-
----
-
-class: inverse, center, middle
-
-# Tayo na sa talipapa / Let's go to the market
 
 ---
 
