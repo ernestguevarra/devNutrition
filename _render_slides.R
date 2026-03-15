@@ -9,7 +9,11 @@ rmarkdown::render(input = "index.Rmd")
 
 
 ## Render slides to PDF ----
-pagedown::chrome_print(input = "index.html", output = "devNutrition.pdf")
+pagedown::chrome_print(
+  input = "index.html", output = "devNutrition.pdf",
+  timeout = 300,
+  extra_args = c("--no-sandbox", "--disable-dev-shm-usage")
+)
 
 
 ## Create directory for slide outputs ----
