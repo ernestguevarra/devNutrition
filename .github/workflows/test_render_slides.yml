@@ -1,0 +1,52 @@
+on:
+  pull_request:
+    branches: main
+
+name: Test render slides
+
+jobs:
+  test-render-slides:
+    runs-on: ubuntu-latest
+    container: rocker/tidyverse:4.5.2
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN  }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y --no-install-recommends \
+          curl
+
+      - name: Install chrome
+        run: |
+          curl -LO https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          apt-get install -y ./google-chrome-stable_current_amd64.deb
+          rm google-chrome-stable_current_amd64.deb
+                  
+      - name: Install R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
+
+      - name: Render slides and PDFs
+        run: |
+          source("_render_slides.R")
+        shell: Rscript {0}
+        
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v3.0
+        with:
+          publish-dir: './docs'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message:
+            'Deploy from GHA: ${{ github.event.pull_request.title || github.event.head_commit.message }} (${{ github.sha }})'
+          # these default to 'true'
+          enable-commit-comment: false
+          enable-github-deployment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
