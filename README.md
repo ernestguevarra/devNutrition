@@ -23,14 +23,14 @@ no reading required prior to the session
 # Further Readings
 Sen, A. (1981). Poverty and famines. Oxford: Oxford University Press.
 
-Sen, Amartya. “Famines as Failures of Exchange Entitlements.” Economic and Political Weekly , vol. 11, no. 31/33, 1976, pp. 1273–1280. JSTOR, www.jstor.org/stable/4364836. Accessed 28 Feb. 2021.
+Sen, Amartya. "Famines as Failures of Exchange Entitlements." Economic and Political Weekly , vol. 11, no. 31/33, 1976, pp. 1273–1280. JSTOR, www.jstor.org/stable/4364836. Accessed 28 Feb. 2021.
 
 Stephen Devereux (2001) Sen's Entitlement Approach: Critiques and Counter-critiques, Oxford Development Studies, 29:3, 245-263, DOI: 10.1080/13600810120088859
 
 Wilma E Waterlander, Cliona Ni Mhurchu, Helen Eyles, Stefanie Vandevijvere, Christine Cleghorn, Peter Scarborough, Boyd Swinburn, Jaap Seidell, 
 Food Futures: Developing effective food systems interventions to improve public health nutrition, Agricultural Systems, Volume 160, 2018, Pages 124-131, ISSN 0308-521X, https://doi.org/10.1016/j.agsy.2017.01.006.
 
-Gillespie, S. and van den Bold, M. (2017) ‘Agriculture, Food Systems, and Nutrition: Meeting the Challenge’, Global Challenges, 1(3), p. 1600002. doi: 10.1002/gch2.201600002.
+Gillespie, S. and van den Bold, M. (2017) 'Agriculture, Food Systems, and Nutrition: Meeting the Challenge', Global Challenges, 1(3), p. 1600002. doi: 10.1002/gch2.201600002.
 
 ## Author
 
