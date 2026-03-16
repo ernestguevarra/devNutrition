@@ -136,9 +136,9 @@ girafe(
 
 ## Select countries to plot
 countries <- c(
-  "Nigeria", "Sudan", "South Sudan", "Sierra Leone", "Ghana", "Lesotho", 
-  "Kenya", "Indonesia", "Liberia", "Zimbabwe", "Japan", "Egypt", "Mozambique",
-  "State of Palestine", "Sri Lanka"
+  "Tanzania", "Sudan", "Zimbabwe", "South Africa", "Indonesia", "Kenya", 
+  "Sri Lanka", "Eritrea", "Ethiopia", "Cameroon", "South Sudan", "Thailand",
+  "India", "Ghana", "Malawi", "Gambia", "Haiti"
 )
 
 ## Plot double burden: stunting and overweight
@@ -262,7 +262,7 @@ country_child_nutrition |>
     ),
     year = as.integer(year)
   ) |>
-  ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
+  ggplot(mapping = aes(x = year, y = value, group = 1)) +
   geom_line(
     mapping = aes(colour = disagg.value),
     linewidth = 1.5
@@ -304,7 +304,7 @@ country_child_nutrition |>
     ),
     year = as.integer(year)
   ) |>
-  ggplot(mapping = aes(x = year, y = value, group = disagg.value)) +
+  ggplot(mapping = aes(x = year, y = value, group = 1)) +
   geom_line(
     mapping = aes(colour = disagg.value),
     linewidth = 1.5
