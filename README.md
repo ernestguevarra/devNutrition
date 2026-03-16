@@ -2,9 +2,9 @@
 
 <!-- badges: start -->
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ernestguevarra/devHealth)
-[![License for data](https://img.shields.io/badge/license (for data)-CC0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
-[![License for code](https://img.shields.io/badge/license (for code)-GPL3.0-blue)](https://opensource.org/licenses/gpl-3.0.html)
-[![License for slide deck](https://img.shields.io/badge/license (for slide decks)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+[![License for data](https://img.shields.io/badge/license_(for_data)-CC0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![License for code](https://img.shields.io/badge/license_(for_code)-GPL3.0-blue)](https://opensource.org/licenses/gpl-3.0.html)
+[![License_(for_slide_deck)](https://img.shields.io/badge/license (for slide decks)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![DOI](https://zenodo.org/badge/343647731.svg)](https://zenodo.org/badge/latestdoi/343647731)
 <!-- badges: end -->
 
