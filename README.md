@@ -5,6 +5,8 @@
 [![License for data](https://img.shields.io/badge/license_(for_data)-CC0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
 [![License for code](https://img.shields.io/badge/license_(for_code)-GPL3.0-blue)](https://opensource.org/licenses/gpl-3.0.html)
 [![License (for slide deck)](https://img.shields.io/badge/license_(for_slide_deck)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
+[![Test render slides](https://github.com/ernestguevarra/devNutrition/actions/workflows/test_render_slides.yml/badge.svg)](https://github.com/ernestguevarra/devNutrition/actions/workflows/test_render_slides.yml)
+[![Publish slides](https://github.com/ernestguevarra/devNutrition/actions/workflows/publish.yml/badge.svg)](https://github.com/ernestguevarra/devNutrition/actions/workflows/publish.yml)
 [![DOI](https://zenodo.org/badge/343647731.svg)](https://zenodo.org/badge/latestdoi/343647731)
 <!-- badges: end -->
 
