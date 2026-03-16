@@ -1,4 +1,4 @@
-name: Publish tutorial notes
+name: Publish slides
 
 on:
   push:

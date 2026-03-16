@@ -2,7 +2,9 @@
 
 <!-- badges: start -->
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/ernestguevarra/devHealth)
-[![](https://img.sheilds.io/badge/license-GPLv3-blue)](https://github.com/ernestguevarra/devNutrition/blob/master/LICENSE.md)
+[![License for data](https://img.shields.io/badge/license_(for_data)-CC0-blue)](https://creativecommons.org/publicdomain/zero/1.0/)
+[![License for code](https://img.shields.io/badge/license_(for_code)-GPL3.0-blue)](https://opensource.org/licenses/gpl-3.0.html)
+[![License (for slide deck)](https://img.shields.io/badge/license_(for_slide_deck)-CC_BY_4.0-blue)](https://creativecommons.org/licenses/by/4.0/)
 [![DOI](https://zenodo.org/badge/343647731.svg)](https://zenodo.org/badge/latestdoi/343647731)
 <!-- badges: end -->
 
@@ -23,14 +25,14 @@ no reading required prior to the session
 # Further Readings
 Sen, A. (1981). Poverty and famines. Oxford: Oxford University Press.
 
-Sen, Amartya. “Famines as Failures of Exchange Entitlements.” Economic and Political Weekly , vol. 11, no. 31/33, 1976, pp. 1273–1280. JSTOR, www.jstor.org/stable/4364836. Accessed 28 Feb. 2021.
+Sen, Amartya. "Famines as Failures of Exchange Entitlements." Economic and Political Weekly , vol. 11, no. 31/33, 1976, pp. 1273–1280. JSTOR, www.jstor.org/stable/4364836. Accessed 28 Feb. 2021.
 
 Stephen Devereux (2001) Sen's Entitlement Approach: Critiques and Counter-critiques, Oxford Development Studies, 29:3, 245-263, DOI: 10.1080/13600810120088859
 
 Wilma E Waterlander, Cliona Ni Mhurchu, Helen Eyles, Stefanie Vandevijvere, Christine Cleghorn, Peter Scarborough, Boyd Swinburn, Jaap Seidell, 
 Food Futures: Developing effective food systems interventions to improve public health nutrition, Agricultural Systems, Volume 160, 2018, Pages 124-131, ISSN 0308-521X, https://doi.org/10.1016/j.agsy.2017.01.006.
 
-Gillespie, S. and van den Bold, M. (2017) ‘Agriculture, Food Systems, and Nutrition: Meeting the Challenge’, Global Challenges, 1(3), p. 1600002. doi: 10.1002/gch2.201600002.
+Gillespie, S. and van den Bold, M. (2017) 'Agriculture, Food Systems, and Nutrition: Meeting the Challenge', Global Challenges, 1(3), p. 1600002. doi: 10.1002/gch2.201600002.
 
 ## Author
 
@@ -38,4 +40,8 @@ Ernest Guevarra
 
 ## License
 
-This work is licensed under a [GNU General Public License 3 (GPL-3)](https://github.com/ernestguevarra/devNutrition/blob/master/LICENSE.md)
+Unless otherwise specified, data used in the code and in the slide decks in this repository are licensed under a [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) license.
+
+All code in this repository are licensed under a [GNU General Public License 3 (GPL-3)](https://opensource.org/licenses/gpl-3.0.html) license.
+
+All slide decks in this repository are licensed under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
